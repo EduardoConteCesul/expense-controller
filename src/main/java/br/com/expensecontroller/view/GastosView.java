@@ -2,6 +2,7 @@ package br.com.expensecontroller.view;
 
 import br.com.expensecontroller.enums.Categoria;
 import br.com.expensecontroller.model.Gastos;
+import br.com.expensecontroller.view_model.GastosViewModel;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
@@ -22,8 +23,10 @@ public class GastosView {
     @FXML private TableColumn<Gastos, String> colCusto;
     @FXML private TableColumn<Gastos, LocalDate> colData;
 
+    private final GastosViewModel vm = new GastosViewModel();
+
     @FXML
     private void initialize(){
-
+        descricao.textProperty().bindBidirectional(vm.);
     }
 }
