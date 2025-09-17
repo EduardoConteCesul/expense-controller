@@ -25,13 +25,14 @@ public class GastosView {
     @FXML private TableColumn<Gastos, String> colDescricao;
     @FXML private TableColumn<Gastos, String> colCusto;
     @FXML private TableColumn<Gastos, LocalDate> colData;
-    @FXML private TextField totalDespesas;
+    @FXML private Label totalDespesas;
 
     private final GastosViewModel vm = new GastosViewModel();
 
     @FXML
     private void initialize(){
 
+        categoria.getItems().setAll(Categoria.values());
         categoria.valueProperty().bindBidirectional(vm.categoriaObjectProperty());
 
         descricao.textProperty().bindBidirectional(vm.descricaoProperty());
@@ -52,7 +53,9 @@ public class GastosView {
 
         totalDespesas.textProperty().bind(vm.totalProperty().asString("R$ %.2f"));
 
-        adicionar.setOnAction( actionEvent -> vm.addDespesa());
+        adicionar.setOnAction( actionEvent -> {
+            vm.addDespesa();
+        });
 
         remover.setOnAction(actionEvent -> {
             vm.deletarItemSelecionado(tabelaDespesas.getSelectionModel().getSelectedItem());

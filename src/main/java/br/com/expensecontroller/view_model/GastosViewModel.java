@@ -13,7 +13,7 @@ import javafx.collections.ObservableList;
 import java.time.LocalDate;
 
 public class GastosViewModel {
-    private final ObjectProperty<Categoria> categoria = new SimpleObjectProperty<>(null);
+    private final ObjectProperty<Categoria> categoria = new SimpleObjectProperty<>();
     private final StringProperty descricao = new SimpleStringProperty();
     private final DoubleProperty valor = new SimpleDoubleProperty();
     private final ObjectProperty<LocalDate> data = new SimpleObjectProperty<>(LocalDate.now());
@@ -24,7 +24,7 @@ public class GastosViewModel {
         {bind(despesas);}
         @Override
         protected double computeValue() {
-            return despesas.stream().mapToDouble(Gastos::getValorGasto).sum();
+            return despesas.stream().mapToDouble(Gastos::getCusto).sum();
         }
     };
 
@@ -73,6 +73,7 @@ public class GastosViewModel {
     public void addDespesa(){
         // Regras de validação
         if (descricao.get() == null || descricao.get().isBlank()) return;
+        if (categoria.get() == null) return;
         Gastos expense = new Gastos(categoria.get(), descricao.get(), valor.get(), data.get());
         despesas.add(expense);
         limpasCampos();

@@ -5,22 +5,24 @@ import org.bson.types.ObjectId;
 
 import java.time.LocalDate;
 
-// Representação no código da nossa tabela do banco
+// Representação em código da nossa tabela do banco
 
 public class Gastos {
 
     private ObjectId id;
     private Categoria categoria;
     private String descricao;
-    private double valorGasto;
-    private LocalDate dataGasto;
+    private double custo;
+    private LocalDate data;
 
     public Gastos(){}
-    public Gastos(Categoria categoria, String descricao, double valorGasto, LocalDate dataGasto) {
+
+    public Gastos(Categoria categoria, String descricao, double custo, LocalDate data) {
+        this.id = null;
         this.categoria = categoria;
         this.descricao = descricao;
-        this.valorGasto = valorGasto;
-        this.dataGasto = dataGasto;
+        this.custo = custo;
+        this.data = data;
     }
 
     public ObjectId getId() {
@@ -47,19 +49,19 @@ public class Gastos {
         this.descricao = descricao;
     }
 
-    public double getValorGasto() {
-        return valorGasto;
+    public double getCusto() {
+        return custo;
     }
 
-    public void setValorGasto(double valorGasto) {
-        this.valorGasto = valorGasto;
+    public void setCusto(double custo) {
+        this.custo = custo;
     }
 
-    public LocalDate getDataGasto() {
-        return dataGasto;
+    public LocalDate getData() {
+        return data;
     }
 
-    public void setDataGasto(LocalDate dataGasto) {
-        this.dataGasto = dataGasto;
+    public void setData(LocalDate data) {
+        this.data = data;
     }
 }

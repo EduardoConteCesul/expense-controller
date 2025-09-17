@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="526.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/21.0.5" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="526.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/21.0.5" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.expensecontroller.view.GastosView">
    <children>
       <VBox prefHeight="533.0" prefWidth="760.0">
          <children>
@@ -80,14 +80,14 @@
                         <Font name="System Bold" size="22.0" />
                      </font>
                   </Label>
-                  <Label fx:id="totaldespesas" prefHeight="139.0" prefWidth="115.0" text=" R$ 0.00" textFill="RED">
+                  <Label fx:id="totalDespesas" prefHeight="139.0" prefWidth="115.0" text=" R$ 0.00" textFill="RED">
                      <font>
                         <Font name="System Bold" size="26.0" />
                      </font>
                   </Label>
                </children>
             </HBox>
-            <TableView fx:id="totalDespesas" prefHeight="416.0" prefWidth="760.0" style="-fx-alignment: CENTER;">
+            <TableView fx:id="tabelaDespesas" prefHeight="416.0" prefWidth="760.0" style="-fx-alignment: CENTER;">
               <columns>
                   <TableColumn fx:id="colCategoria" prefWidth="195.0" style="-fx-alignment: CENTER;" text="Categoria" />
                 <TableColumn fx:id="colDescricao" prefWidth="219.0" style="-fx-alignment: CENTER;" text="Descrição" />
