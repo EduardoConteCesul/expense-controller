@@ -12,13 +12,13 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="526.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/21.0.5" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.expensecontroller.view.GastosView">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="526.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.expensecontroller.view.GastosView">
    <children>
       <VBox prefHeight="533.0" prefWidth="760.0">
          <children>
-            <HBox prefHeight="209.0" prefWidth="760.0">
+            <HBox prefHeight="143.0" prefWidth="760.0">
                <children>
                   <VBox prefHeight="200.0" prefWidth="326.0">
                      <children>
@@ -34,6 +34,9 @@
                            <VBox.margin>
                               <Insets left="20.0" right="20.0" top="10.0" />
                            </VBox.margin>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
                         </TextField>
                         <HBox prefHeight="46.0" prefWidth="324.0">
                            <children>
@@ -44,6 +47,9 @@
                                  <HBox.margin>
                                     <Insets left="20.0" top="10.0" />
                                  </HBox.margin>
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
                               </TextField>
                               <DatePicker fx:id="data" promptText="Data ">
                                  <HBox.margin>
@@ -60,11 +66,17 @@
                                        <VBox.margin>
                                           <Insets left="20.0" right="20.0" top="10.0" />
                                        </VBox.margin>
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
                                     </Button>
                                     <Button fx:id="remover" mnemonicParsing="false" prefHeight="25.0" prefWidth="344.0" text="Remover">
                                        <VBox.margin>
                                           <Insets left="20.0" right="20.0" top="10.0" />
                                        </VBox.margin>
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
                                     </Button>
                                  </children>
                               </VBox>
@@ -75,16 +87,76 @@
                         <Insets />
                      </opaqueInsets>
                   </VBox>
-                  <Label prefHeight="136.0" prefWidth="235.0" text="Total de Despesas" textAlignment="CENTER">
-                     <font>
-                        <Font name="System Bold" size="22.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="totalDespesas" prefHeight="139.0" prefWidth="115.0" text=" R$ 0.00" textFill="RED">
-                     <font>
-                        <Font name="System Bold" size="26.0" />
-                     </font>
-                  </Label>
+                  <VBox prefHeight="185.0" prefWidth="437.0">
+                     <children>
+                        <HBox prefHeight="36.0" prefWidth="436.0">
+                           <children>
+                              <Text fill="#0066ff" strokeType="OUTSIDE" strokeWidth="0.0" text="Controlador de Despesas" textAlignment="CENTER" wrappingWidth="435.13671875">
+                                 <font>
+                                    <Font name="System Bold" size="33.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="195.0" prefWidth="436.0">
+                           <children>
+                              <VBox prefHeight="187.0" prefWidth="276.0">
+                                 <children>
+                                    <Label prefHeight="46.0" prefWidth="207.0" text="            Salário" textAlignment="RIGHT">
+                                       <font>
+                                          <Font name="System Bold" size="22.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </Label>
+                                    <Label prefHeight="17.0" prefWidth="220.0" text="        Saldo Atual" textAlignment="CENTER">
+                                       <font>
+                                          <Font name="System Bold" size="22.0" />
+                                       </font>
+                                    </Label>
+                                    <Label prefHeight="17.0" prefWidth="247.0" text="     Total Despesas" textFill="RED">
+                                       <font>
+                                          <Font name="System Bold" size="22.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets top="10.0" />
+                                 </HBox.margin>
+                              </VBox>
+                              <VBox prefHeight="206.0" prefWidth="276.0">
+                                 <children>
+                                    <TextField fx:id="salario" text="Salário">
+                                       <VBox.margin>
+                                          <Insets bottom="11.0" left="30.0" right="50.0" top="20.0" />
+                                       </VBox.margin>
+                                    </TextField>
+                                    <Label fx:id="saldoAtual" prefHeight="17.0" prefWidth="317.0" text="R$0,00">
+                                       <font>
+                                          <Font name="System Bold" size="22.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets left="30.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <Label fx:id="totalDespesas" prefHeight="17.0" prefWidth="276.0" text="R$0,00" textFill="RED">
+                                       <font>
+                                          <Font name="System Bold" size="22.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets left="30.0" top="10.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
                </children>
             </HBox>
             <TableView fx:id="tabelaDespesas" prefHeight="416.0" prefWidth="760.0" style="-fx-alignment: CENTER;">
