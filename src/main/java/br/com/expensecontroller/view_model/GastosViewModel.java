@@ -4,6 +4,7 @@ import br.com.expensecontroller.enums.Categoria;
 import br.com.expensecontroller.model.Gastos;
 import br.com.expensecontroller.repository.GastosRepository;
 import javafx.application.Platform;
+import javafx.beans.binding.Bindings;
 import javafx.beans.binding.DoubleBinding;
 import javafx.beans.property.*;
 import javafx.collections.FXCollections;
@@ -20,58 +21,60 @@ public class GastosViewModel {
 
     private final ObservableList<Gastos> despesas = FXCollections.observableArrayList();
 
+    // 🟢 novo campo para o salário
+    private final DoubleProperty salario = new SimpleDoubleProperty(0);
+
+    // total de despesas já implementado
     private final DoubleBinding total = new DoubleBinding() {
-        {bind(despesas);}
+        { bind(despesas); }
         @Override
         protected double computeValue() {
             return despesas.stream().mapToDouble(Gastos::getCusto).sum();
         }
     };
 
+    // 🟢 saldo atual = salário - total
+    private final DoubleBinding saldoAtual = Bindings.createDoubleBinding(
+            () -> salario.get() - total.get(),
+            salario, total
+    );
+
     private final GastosRepository repository = new GastosRepository();
 
-    public GastosViewModel(){
+    public GastosViewModel() {
         despesas.addAll(repository.findAll());
 
         despesas.addListener((ListChangeListener<? super Gastos>) change -> {
-            while (change.next()){
-                if (change.wasAdded()){
+            while (change.next()) {
+                if (change.wasAdded()) {
                     change.getAddedSubList().forEach(repository::insert);
                 }
-
-                if (change.wasRemoved()){
+                if (change.wasRemoved()) {
                     change.getRemoved().forEach(repository::delete);
                 }
             }
         });
     }
 
-    public ObjectProperty<Categoria> categoriaObjectProperty(){
-        return categoria;
-    }
+    // getters para as propriedades
+    public ObjectProperty<Categoria> categoriaObjectProperty() { return categoria; }
 
-    public StringProperty descricaoProperty() {
-        return descricao;
-    }
+    public StringProperty descricaoProperty() { return descricao; }
 
-    public DoubleProperty valorProperty() {
-        return valor;
-    }
+    public DoubleProperty valorProperty() { return valor; }
 
-    public ObjectProperty<LocalDate> getData() {
-        return data;
-    }
+    public ObjectProperty<LocalDate> getData() { return data; }
 
-    public ObservableList<Gastos> getDespesas() {
-        return despesas;
-    }
+    public ObservableList<Gastos> getDespesas() { return despesas; }
 
-    public DoubleBinding totalProperty() {
-        return total;
-    }
+    public DoubleBinding totalProperty() { return total; }
 
-    public void addDespesa(){
-        // Regras de validação
+    public DoubleBinding saldoAtualProperty() { return saldoAtual; }
+
+    public DoubleProperty salarioProperty() { return salario; }
+
+    // métodos para manipulação
+    public void addDespesa() {
         if (descricao.get() == null || descricao.get().isBlank()) return;
         if (categoria.get() == null) return;
         Gastos expense = new Gastos(categoria.get(), descricao.get(), valor.get(), data.get());
@@ -79,7 +82,7 @@ public class GastosViewModel {
         limpasCampos();
     }
 
-    private void limpasCampos(){
+    private void limpasCampos() {
         Platform.runLater(() -> {
             categoria.set(null);
             descricao.set("");
@@ -88,7 +91,7 @@ public class GastosViewModel {
         });
     }
 
-    public void deletarItemSelecionado(Gastos expense){
+    public void deletarItemSelecionado(Gastos expense) {
         if (expense != null) despesas.remove(expense);
     }
 }
