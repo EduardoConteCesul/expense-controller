@@ -16,7 +16,7 @@ public class App extends Application
     // Substituir endereço
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("br.com.expensecontroller/ExpenseView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/com/expensecontroller/DespesasView.fxml"));
 
         Parent root = loader.load();
         stage.setScene(new Scene(root));
@@ -27,5 +27,6 @@ public class App extends Application
     public static void main(String[] args )
     {
         System.out.println( "Hello World!" );
+        launch(args);
     }
 }
