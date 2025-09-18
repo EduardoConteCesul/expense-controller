@@ -13,6 +13,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <javafx.version>17.0.12</javafx.version>
+<!--    <javafx.version>21.0.5</javafx.version>-->
     <mongo.driver>5.5.0</mongo.driver>
   </properties>
 
