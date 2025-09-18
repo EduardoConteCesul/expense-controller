@@ -16,8 +16,8 @@ public class Gastos {
     private LocalDate dataGasto;
 
     public Gastos(){}
-    public Gastos(ObjectId id, Categoria categoria, String descricao, double valorGasto, LocalDate dataGasto) {
-        this.id = id;
+    public Gastos(Categoria categoria, String descricao, double valorGasto, LocalDate dataGasto) {
+        this.id = null;
         this.categoria = categoria;
         this.descricao = descricao;
         this.valorGasto = valorGasto;
